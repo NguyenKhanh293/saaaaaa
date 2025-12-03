@@ -1,0 +1,240 @@
+/* =========================
+   RESET CƠ BẢN
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f0f4ff url("bg.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+    line-height: 1.4;
+}
+
+/* =========================
+   KHUNG HIỂN THỊ CHÍNH
+========================= */
+.center-box {
+    width: 400px;
+    margin: 40px auto;
+    padding: 25px 28px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    backdrop-filter: blur(3px);
+}
+
+.hidden {
+    display: none;
+}
+
+/* =========================
+   TIÊU ĐỀ
+========================= */
+h2 {
+    text-align: center;
+    color: #0059b3;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+legend {
+    font-weight: 600;
+    color: #0059b3;
+    margin-bottom: 4px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* =========================
+   INPUT & SELECT
+========================= */
+input, select {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    margin-top: 6px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus, select:focus {
+    border-color: #0078ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 120, 255, 0.4);
+}
+
+/* =========================
+   BUTTON
+========================= */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    background: #0078ff;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background: #005fcc;
+}
+
+button.back {
+    background: #555;
+}
+
+button.back:hover {
+    background: #3a3a3a;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Button group trong form */
+.form-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.form-buttons button {
+    flex: 1;
+}
+
+/* =========================
+   SEARCH FILTERS
+========================= */
+.filters {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.filters label {
+    font-size: 14px;
+    color: #0059b3;
+    display: block;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* =========================
+   BẢNG KẾT QUẢ TÌM KIẾM
+========================= */
+#search-results {
+    margin-top: 20px;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+#search-results table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#search-results th {
+    background: #0078ff;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+}
+
+#search-results td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#search-results tr:nth-child(even) {
+    background: #f2f7ff;
+}
+
+#search-results tr:hover {
+    background: #e6f1ff;
+}
+
+/* Buttons trong bảng */
+#search-results button {
+    width: auto !important;
+    padding: 6px 12px;
+    margin: 3px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* =========================
+   THÔNG BÁO LỖI / TRẠNG THÁI
+========================= */
+#add-status,
+#login-error {
+    margin-top: 10px;
+    color: red;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* =========================
+   TỐI ƯU MOBILE
+========================= */
+@media (max-width: 480px) {
+    .center-box {
+        width: 92%;
+        margin-top: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    input, select {
+        font-size: 14px;
+    }
+
+    #search-results table {
+        font-size: 12px;
+    }
+}
+
+/* =========================
+   SCREEN READER SUPPORT
+========================= */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* =========================
+   FORM FLEXIBLE LAYOUT
+========================= */
+.flex-row {
+    display: flex;
+    gap: 8px;
+}
+
+.flex-1 {
+    flex: 1;
+}

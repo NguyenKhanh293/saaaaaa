@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hệ thống quản lý khách hàng PRO - Quản lý thông tin, địa chỉ, thanh toán và tìm kiếm nâng cao.">
+    <title>Quản Lý Khách Hàng - PRO Version</title>
+
+    <!-- Favicon (tùy chọn) -->
+    <link rel="icon" href="favicon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main>
+
+  <!-- =========================
+       LOGIN SCREEN
+  ========================= -->
+  <section id="login-screen" class="center-box">
+    <h2>Đăng nhập hệ thống</h2>
+
+    <label for="login-id" class="sr-only">ID</label>
+    <input id="login-id" name="login-id" type="text" placeholder="ID" autocomplete="username">
+
+    <label for="login-pass" class="sr-only">Mật khẩu</label>
+    <input id="login-pass" name="login-pass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+
+    <button id="login-btn" type="button">Đăng nhập</button>
+    <p id="login-error" role="alert" aria-live="polite"></p>
+  </section>
+
+  <!-- =========================
+       MAIN MENU
+  ========================= -->
+  <section id="main-menu" class="hidden center-box">
+    <h2>MENU CHÍNH</h2>
+    <nav>
+      <button id="btn-show-search" type="button">Tìm kiếm khách hàng</button>
+      <button id="btn-show-add" type="button">Thêm khách hàng mới</button>
+      <button id="btn-logout" type="button">Đăng xuất</button>
+    </nav>
+  </section>
+
+  <!-- =========================
+       SEARCH MENU
+  ========================= -->
+  <section id="search-menu" class="hidden center-box">
+    <h2>TÌM KIẾM KHÁCH HÀNG</h2>
+
+    <div class="filters">
+
+      <div>
+        <label for="search-prefecture">都道府県 (Tỉnh)</label>
+        <select id="search-prefecture" name="search-prefecture"></select>
+      </div>
+
+      <div>
+        <label for="search-city-text">市区町村 (Thành phố / Quận)</label>
+        <input id="search-city-text" name="search-city-text" placeholder="Nhập tên thành phố">
+      </div>
+
+      <div>
+        <label for="search-chome">丁目</label>
+        <input id="search-chome" name="search-chome" placeholder="Ví dụ: 1, 2-3">
+      </div>
+
+      <div>
+        <label for="search-zipcode">郵便番号</label>
+        <input id="search-zipcode" name="search-zipcode" placeholder="Nhập mã bưu điện">
+      </div>
+
+      <div>
+        <label for="search-name">Tên khách hàng</label>
+        <input id="search-name" name="search-name" placeholder="Nhập tên (hoặc 1 phần tên)">
+      </div>
+
+      <div>
+        <label for="search-payment">Tháng thanh toán</label>
+        <select id="search-payment" name="search-payment"></select>
+      </div>
+
+      <div style="margin-top:10px;">
+        <button id="btn-search-address" type="button">Tìm theo địa chỉ</button>
+        <button id="btn-search-zipcode" type="button">Tìm theo 郵便番号</button>
+        <button id="btn-search-name" type="button">Tìm theo tên</button>
+        <button id="btn-search-payment" type="button">Tìm theo tháng</button>
+      </div>
+
+    </div>
+
+    <button id="btn-back-from-search" class="back" type="button">Quay lại</button>
+
+    <div id="search-results" aria-live="polite"></div>
+  </section>
+
+  <!-- =========================
+       ADD / EDIT CUSTOMER FORM
+  ========================= -->
+  <section id="add-menu" class="hidden center-box">
+    <h2>THÊM / SỬA KHÁCH HÀNG</h2>
+
+    <form id="customer-form" autocomplete="on">
+
+      <input type="hidden" id="editing-index" name="editing-index">
+
+      <fieldset>
+        <legend>THÔNG TIN CƠ BẢN</legend>
+
+        <label for="name">Tên khách hàng</label>
+        <input id="name" name="name" required autocomplete="name">
+
+        <label for="dob">Ngày sinh</label>
+        <input id="dob" name="dob" type="date" autocomplete="bday">
+
+        <label for="phone">Số điện thoại cá nhân</label>
+        <input id="phone" name="phone" autocomplete="tel">
+
+        <label for="company">Trường / Công ty</label>
+        <input id="company" name="company" autocomplete="organization">
+
+        <label for="company-phone">SĐT công ty</label>
+        <input id="company-phone" name="company-phone" autocomplete="tel">
+      </fieldset>
+
+      <fieldset>
+        <legend>ĐỊA CHỈ NHẬT BẢN</legend>
+
+        <div class="flex-row">
+          <label for="zipcode">郵便番号</label>
+          <input id="zipcode" name="zipcode" maxlength="8" autocomplete="postal-code">
+          <button type="button" id="btn-lookup-zipcode">Tra 郵便番号</button>
+        </div>
+
+        <div>
+          <label for="prefecture">都道府県</label>
+          <select id="prefecture" name="prefecture"></select>
+        </div>
+
+        <div>
+          <label for="city-text">市区町村</label>
+          <input id="city-text" name="city-text" placeholder="Nhập tên thành phố">
+        </div>
+
+        <div class="flex-row">
+          <div class="flex-1">
+            <label for="chome">丁目</label>
+            <input id="chome" name="chome">
+          </div>
+          <div class="flex-1">
+            <label for="ban">番</label>
+            <input id="ban" name="ban">
+          </div>
+        </div>
+
+        <div class="flex-row">
+          <div class="flex-1">
+            <label for="go">号</label>
+            <input id="go" name="go">
+          </div>
+          <div class="flex-1">
+            <label for="building">Tòa nhà / Phòng</label>
+            <input id="building" name="building">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>THÔNG TIN THANH TOÁN</legend>
+
+        <label for="payment-month">Tháng thanh toán</label>
+        <input id="payment-month" name="payment-month" placeholder="YYYY-MM" autocomplete="off">
+
+        <label for="paid">Trạng thái thanh toán</label>
+        <select id="paid" name="paid">
+          <option value="false">Chưa TT</option>
+          <option value="true">Đã TT</option>
+        </select>
+      </fieldset>
+
+      <div class="form-buttons">
+        <button type="submit" id="btn-save">Lưu</button>
+        <button type="button" id="btn-reset">Reset</button>
+        <button type="button" class="back" id="btn-back-from-add">Quay lại</button>
+      </div>
+
+      <p id="add-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
